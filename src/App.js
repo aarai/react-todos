@@ -7,7 +7,6 @@ class App extends Component {
   render() {
     return (
       <Layout>
-        <div>Test Test</div>
         <Todo />
       </Layout>
     );
