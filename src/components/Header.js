@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = () => (
     <header>
-        Header Goes Here
+        <h1>TO DO (or not)</h1>
     </header>
 )
 

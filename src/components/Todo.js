@@ -13,7 +13,6 @@ class Todo extends Component {
   render() {
     return (
       <div>
-        <h2>Todos</h2>
         <ul>
           {this.state.todos.map((todo) =>
           <li key={todo.id}>
