@@ -24,3 +24,7 @@ header {
 ul {
   list-style: none;
 }
+
+.strikethrough {
+  text-decoration: line-through;
+}

@@ -16,7 +16,7 @@ class Todo extends Component {
         <ul>
           {this.state.todos.map((todo) =>
           <li key={todo.id}>
-            {todo.title}
+            <span className={todo.completed ? 'strikethrough' : ''} >{todo.title}</span>
             <input type="checkbox" name={todo.id} onChange={this.handleChange} value={todo.completed} defaultChecked={todo.completed} />
           </li>
           )}
@@ -26,18 +26,15 @@ class Todo extends Component {
   }
 
   handleChange(event) {
-    let idx = event.target.name;
+    let todos = [...this.state.todos];
+    let todoId = parseInt(event.target.name);
+    let idx = todos.findIndex(todo => todo.id === todoId);
     let isChecked = event.target.checked;
-    let todo = this.state.todos.find(obj => {
-      return obj => obj.id === idx;
-    })
 
-    todo.completed = isChecked;
-    
+    todos[idx].completed = isChecked;
+
     this.setState({
-      todos: [
-        ...this.state.todos
-      ]
+      todos
     })
   }
 
@@ -45,7 +42,6 @@ class Todo extends Component {
     fetch('https://jsonplaceholder.typicode.com/users/1/todos')
     .then(response => response.json())
     .then(json => {
-      //console.log(json)
       this.setState(() => {
         return { todos: json }
       })
